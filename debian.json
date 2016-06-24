@@ -3,7 +3,7 @@
     "local_iso_path": "iso/debian-8.5.0-amd64-netinst.iso",
     "remote_iso_path": "http://debian-iso.mirror.anlx.net/8.5.0/amd64/iso-cd/debian-8.5.0-amd64-netinst.iso",
     "memory": "512",
-    "cores": 1,
+    "cores": "1",
     "disk_size": "16384"
   },
 
