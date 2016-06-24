@@ -8,7 +8,9 @@
     "cores": "1",
     "disk_size": "16384",
     "ssh_username": "vagrant",
-    "ssh_password": "vagrant"
+    "ssh_password": "vagrant",
+    "shutdown_command": "echo 'vagrant' | sudo shutdown now -P"
+
   },
 
   "builders": [
@@ -24,7 +26,8 @@
       "iso_checksum": "{{ user `iso_checksum` }}",
       "communicator": "ssh",
       "ssh_username": "{{ user `ssh_username` }}",
-      "ssh_password": "{{ user `ssh_password` }}"
+      "ssh_password": "{{ user `ssh_password` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}"
     }
 
   ],
