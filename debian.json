@@ -6,7 +6,9 @@
     "iso_checksum": "ad4e8c27c561ad8248d5ebc1d36eb172f884057bfeb2c22ead823f59fa8c3dff",
     "memory": "512",
     "cores": "1",
-    "disk_size": "16384"
+    "disk_size": "16384",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant"
   },
 
   "builders": [
@@ -19,7 +21,10 @@
         "{{ user `remote_iso_path` }}"
       ],
       "iso_checksum_type": "{{ user `iso_checksum_type` }}",
-      "iso_checksum": "{{ user `iso_checksum` }}"
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "communicator": "ssh",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_password": "{{ user `ssh_password` }}"
     }
 
   ],
