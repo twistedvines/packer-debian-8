@@ -12,7 +12,8 @@
     "ssh_wait_timeout": "1200s",
     "shutdown_command": "echo 'vagrant' | sudo shutdown now -P",
     "headless": "false",
-    "http_directory": "./http"
+    "http_directory": "./http",
+    "vm_name": "packer-debian-8"
 
   },
 
@@ -40,6 +41,7 @@
         "{{ user `local_iso_path` }}",
         "{{ user `remote_iso_path` }}"
       ],
+      "vm_name": "{{ user `vm_name` }}",
       "iso_checksum_type": "{{ user `iso_checksum_type` }}",
       "iso_checksum": "{{ user `iso_checksum` }}",
       "communicator": "ssh",
@@ -55,5 +57,13 @@
 
   "provisioners": [],
 
-  "post-processors": []
+  "post-processors": [
+
+    {
+      "type": "vagrant",
+      "keep_input_artifact": "false",
+      "output": "builds/{{.Provider}}-{{ user `vm_name` }}.box"
+    }
+
+  ]
 }
