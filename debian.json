@@ -10,7 +10,8 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "echo 'vagrant' | sudo shutdown now -P",
-    "headless": "false"
+    "headless": "false",
+    "http_directory": "./http"
 
   },
 
@@ -22,11 +23,16 @@
       "boot_command": [
         "<tab>",
         "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-        "noshell=true ",
-        "locale=en_GB ",
-        "language=en ",
-        "country=UK ",
-        "--- quiet",
+        "noapic ",
+        "fb=false ",
+        "locale=en_GB.UTF-8 ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "netcfg/get_domain=local ",
+        "auto=true ",
+        "debconf/frontend=noninteractive ",
+        "console-setup/ask_detect=false ",
+        "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed.cfg ",
+        "---",
         "<enter>"
       ],
       "iso_urls": [
@@ -39,7 +45,8 @@
       "ssh_username": "{{ user `ssh_username` }}",
       "ssh_password": "{{ user `ssh_password` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
-      "headless": "{{ user `headless` }}"
+      "headless": "{{ user `headless` }}",
+      "http_directory": "{{ user `http_directory` }}"
     }
 
   ],
