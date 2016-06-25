@@ -10,7 +10,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "echo 'vagrant' | sudo shutdown now -P",
-    "headless": "true"
+    "headless": "false"
 
   },
 
@@ -19,6 +19,16 @@
     {
       "type": "virtualbox-iso",
       "guest_os_type": "Debian_64",
+      "boot_command": [
+        "<tab>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "noshell=true ",
+        "locale=en_GB ",
+        "language=en ",
+        "country=UK ",
+        "--- quiet",
+        "<enter>"
+      ],
       "iso_urls": [
         "{{ user `local_iso_path` }}",
         "{{ user `remote_iso_path` }}"
