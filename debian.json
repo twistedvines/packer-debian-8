@@ -70,7 +70,7 @@
 
     {
       "type": "vagrant",
-      "keep_input_artifact": "false",
+      "keep_input_artifact": false,
       "output": "builds/{{.Provider}}-{{ user `vm_name` }}.box"
     }
 
