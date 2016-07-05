@@ -61,7 +61,8 @@
       "type": "shell",
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "./scripts/sudoers.sh"
+        "./scripts/sudoers.sh",
+        "./scripts/install_puppet.sh"
       ]
     }
   ],
