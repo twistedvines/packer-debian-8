@@ -1,3 +1,22 @@
+#!/bin/bash
+
+export PUPPET_BIN="/opt/puppetlabs/puppet/bin/puppet"
+
+# $@ - array of all puppet modules to install.
+function install_modules {
+  for MODULE in $@; do
+    echo "Installing ${MODULE}..."
+    MODULE_INSTALL_RESULT=`${PUPPET_BIN} module install ${MODULE}`
+    if [[ $? -eq 0 ]]; then
+      echo "puppet module ${MODULE} installed."
+    else
+      echo "puppet module ${MODULE} did not install, here's why:"
+      echo $MODULE_INSTALL_RESULT
+    fi
+  done
+}
+
+
 echo "Installing Puppet Agent..."
 {
   PUPPET_RELEASE="puppetlabs-release-pc1-jessie.deb"
