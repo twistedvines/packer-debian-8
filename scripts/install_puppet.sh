@@ -29,7 +29,7 @@ echo "Installing Puppet Agent..."
 
 echo "Testing Puppet has been installed correctly..."
 {
-  PUPPET_OUTPUT=`/opt/puppetlabs/puppet/bin/puppet --version`
+  PUPPET_OUTPUT=`${PUPPET_BIN} --version`
   if [[ $? -eq 0 ]]; then
     echo "All good! you're rolling with version ${PUPPET_OUTPUT}."
   else
