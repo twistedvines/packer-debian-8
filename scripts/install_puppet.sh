@@ -6,4 +6,4 @@ echo "Installing Puppet Agent..."
   apt-get update -y
   apt-get install -qq puppet-agent
   rm -r $PUPPET_RELEASE
-} > /dev/null
+} > /dev/null 2>&1
