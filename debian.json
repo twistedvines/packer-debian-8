@@ -14,7 +14,6 @@
     "headless": "false",
     "http_directory": "./http",
     "vm_name": "packer-debian-8"
-
   },
 
   "builders": [
@@ -64,6 +63,12 @@
         "./scripts/sudoers.sh",
         "./scripts/install_puppet.sh"
       ]
+    },
+    {
+      "type": "puppet-masterless",
+      "manifest_file": "./puppet/manifests/vim/vim.pp",
+      "hiera_config_path": "./puppet/manifests/vim/hiera_config.yaml",
+      "execute_command": "cd {{.WorkingDir}}; sudo -E -S /opt/puppetlabs/puppet/bin/puppet apply {{.ManifestFile}} --hiera_config='{{.HieraConfigPath}}'"
     }
   ],
 

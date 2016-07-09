@@ -24,6 +24,7 @@ echo "Installing Puppet Agent..."
   dpkg -i $PUPPET_RELEASE
   apt-get update -y
   apt-get install -qq puppet-agent
+  ln -s /opt/puppetlabs/puppet/bin/puppet /usr/local/bin/puppet
   rm -r $PUPPET_RELEASE
 } > /dev/null 2>&1
 
@@ -37,3 +38,6 @@ echo "Testing Puppet has been installed correctly..."
     echo $PUPPET_OUTPUT
   fi
 }
+
+echo "Installing Puppet Modules..."
+install_modules "saz/vim"

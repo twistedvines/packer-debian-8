@@ -1,0 +1,8 @@
+vim:
+  ensure: present
+  set_as_default: true
+  autoupgrade: false
+  opt_bg_shading: 'light'
+  opt_indent: true
+  opt_matchparen: true
+  opt_misc: [number, ignorecase]
