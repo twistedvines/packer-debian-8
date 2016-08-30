@@ -52,6 +52,46 @@
       "headless": "{{ user `headless` }}",
       "http_directory": "{{ user `http_directory` }}",
       "guest_additions_mode": "disable"
+    },
+    {
+      "type": "qemu",
+      "boot_command": [
+        "<tab>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "noapic ",
+        "fb=false ",
+        "locale=en_GB.UTF-8 ",
+        "netcfg/get_hostname={{ .Name }} ",
+        "netcfg/get_domain=local ",
+        "auto=true ",
+        "debconf/frontend=noninteractive ",
+        "console-setup/ask_detect=false ",
+        "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed.cfg ",
+        "---",
+        "<enter>"
+      ],
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_checksum_type": "{{ user `iso_checksum_type` }}",
+      "iso_urls": [
+        "{{ user `local_iso_path` }}",
+        "{{ user `remote_iso_path` }}"
+      ],
+      "vm_name": "{{ user `vm_name` }}",
+      "communicator": "ssh",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_wait_timeout": "{{ user `ssh_wait_timeout` }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "accelerator": "kvm",
+      "headless": "{{ user `headless` }}",
+      "http_directory": "{{ user `http_directory` }}",
+      "disk_interface": "ide",
+      "disk_size": "{{ user `disk_size` }}",
+      "net_device": "virtio-net",
+      "qemuargs": [
+        [ "-m", "{{ user `memory` }}M" ],
+        [ "-smp", "{{ user `cores`}}" ]
+      ]
     }
 
   ],
